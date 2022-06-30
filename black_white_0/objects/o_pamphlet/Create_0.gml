@@ -1,0 +1,1 @@
+interacted_with = false; 

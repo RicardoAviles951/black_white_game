@@ -1,0 +1,14 @@
+//global.state = state.ghost;
+move_spd = 3;
+hsp = 0;
+vsp = 0;
+angle = 0;
+idle = false; 
+interacted_with = false;
+interact_array = array_create(0,noone);
+container = 0;
+image_speed = 2;
+delta_x = x - xprevious;
+delta_y = y - yprevious;
+goals = 0;
+death = false;
