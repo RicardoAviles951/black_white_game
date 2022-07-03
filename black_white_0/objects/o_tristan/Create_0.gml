@@ -4,5 +4,6 @@ vsp = 0;
 angle = 0;
 idle = false; 
 interacted_with = false;
+spr_inv = s_tristan_inverted;
 delta_x = x - xprevious;
 delta_y = y - yprevious;

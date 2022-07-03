@@ -13,6 +13,6 @@ if global.alex_goals >=5 and !instance_exists(o_text_box){
 	}
 }
 
-show_debug_message("Alex goals = "+string(global.alex_goals))
+//show_debug_message("Alex goals = "+string(global.alex_goals))
 //show_debug_message(x);
 }
