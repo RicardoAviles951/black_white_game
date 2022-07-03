@@ -31,5 +31,5 @@ if keyboard_check_pressed(vk_numpad2) y_adj -=1;
 if keyboard_check_pressed(vk_numpad4) x_adj -=1;
 if keyboard_check_pressed(vk_numpad6) x_adj +=1;
 
-show_debug_message("x_adj =  " + string(x_adj));
-show_debug_message("y_adj =  " + string(y_adj));
+//show_debug_message("x_adj =  " + string(x_adj));
+//show_debug_message("y_adj =  " + string(y_adj));

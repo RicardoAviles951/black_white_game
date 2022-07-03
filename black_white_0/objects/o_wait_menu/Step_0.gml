@@ -8,7 +8,7 @@ pos+= menu_down - menu_up;
 if pos >= op_length pos = 0;
 if pos< 0 pos = op_length - 1;
 
-if key_enter{
+if keyboard_check_pressed(vk_space){
 	switch(pos){
 		case 0: //Tristan
 			global.state = states.tristan;

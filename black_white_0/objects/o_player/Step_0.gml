@@ -24,5 +24,5 @@ else{
 	x = room_width +400;
 	y = 0;
 }
-show_debug_message("Delta x = "+string(sign(delta_x)));
-show_debug_message("Delta y = "+string(sign(delta_y)));
+//("Delta x = "+string(sign(delta_x)));
+//show_debug_message("Delta y = "+string(sign(delta_y)));
