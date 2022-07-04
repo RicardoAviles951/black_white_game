@@ -1,0 +1,1 @@
+global.view_warp = true;
