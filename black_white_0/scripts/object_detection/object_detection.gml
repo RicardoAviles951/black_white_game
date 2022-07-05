@@ -11,6 +11,7 @@ var hit = collision_line(x,y,x+x_dir,y+y_dir,o_interaction_parent,false,true);//
 
 if hit != -4  //if the collision is hitting anything
 {		
+	
 	with(hit){
 		sprite_index = spr_inv;
 	}
@@ -40,7 +41,6 @@ if instance_exists(o_text_box){
 									break;
 									case 2:
 									o_text_box.myText ="It used to drive me crazy how you always made a point of telling me where your will was, and your bank accounts, and all the important documents. But... now I guess I'm grateful that you did.";
-									next_step();
 									break;
 								}
 				} 
@@ -116,7 +116,7 @@ if instance_exists(o_text_box){
 												o_text_box.sprite = s_portrait_guestbook;
 												o_text_box.font = f_wingdings;
 												//o_text_box.choice = true;
-												o_text_box.myText ="Tristan's Entry\n'I will never forget the way you looked at me when we were younger. When our relationship was younger.'";
+												o_text_box.myText ="Tristan's Entry\n'I will never forget the way you looked at me when we were'";
 												next_step();
 												break;
 												case 1:
@@ -339,7 +339,7 @@ if instance_exists(o_text_box){
 					switch(o_text_box.counter){
 						case 0:
 							o_text_box.font = f_dialogue;
-							o_text_box.sprite = s_portrait_sam;
+							o_text_box.sprite = s_portrait_tristan;
 							o_text_box.myText = "The two of you were so close, its amazing you didn't get left with the farm and everything despite only ever having been roomates.";
 							next_step();
 						break;
@@ -472,6 +472,7 @@ if instance_exists(o_text_box){
 						}
 					}
 			}
+		break;
 		case states.tristan:
 			if instance_exists(o_alex){
 				if (hit == o_alex.id){

@@ -21,7 +21,9 @@ switch(current_room){
 if place_meeting(x,y,o_camera.target)
 {
 	global.view_warp = false;
-	room_goto(target_room);
+	close_sq();
+	door_sound();
+	if alarm[1] == -1 alarm[1] = 15;
 }
 
 
