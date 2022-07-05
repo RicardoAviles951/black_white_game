@@ -14,6 +14,7 @@
   ],
   "layers": [
     {"instances":[
+        {"properties":[],"isDnd":false,"objectId":{"name":"o_seq_ctr","path":"objects/o_seq_ctr/o_seq_ctr.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":192.0,"y":-96.0,"resourceVersion":"1.0","name":"inst_3220E453","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"o_camera","path":"objects/o_camera/o_camera.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":96.0,"y":-96.0,"resourceVersion":"1.0","name":"inst_426B2B57","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"o_interaction_parent","path":"objects/o_interaction_parent/o_interaction_parent.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":128.0,"y":-96.0,"resourceVersion":"1.0","name":"inst_5EB65118","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"o_spawner","path":"objects/o_spawner/o_spawner.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":160.0,"y":-96.0,"resourceVersion":"1.0","name":"inst_22A8AC47","tags":[],"resourceType":"GMRInstance",},
@@ -45,6 +46,7 @@
   "creationCodeFile": "${project_dir}/rooms/rm_parking/RoomCreationCode.gml",
   "inheritCode": false,
   "instanceCreationOrder": [
+    {"name":"inst_426B2B57","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_61DDF35F","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_5B756B","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_51559D6E","path":"rooms/rm_parking/rm_parking.yy",},
@@ -59,11 +61,11 @@
     {"name":"inst_7F6E0B58","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_1A680C64","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_42D72B30","path":"rooms/rm_parking/rm_parking.yy",},
-    {"name":"inst_426B2B57","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_5EB65118","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_22A8AC47","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_4DEFE9CB","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_6AD2B4EE","path":"rooms/rm_parking/rm_parking.yy",},
+    {"name":"inst_3220E453","path":"rooms/rm_parking/rm_parking.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

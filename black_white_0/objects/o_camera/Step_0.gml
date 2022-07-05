@@ -29,8 +29,3 @@ switch(cam_state){
 	
 	break;
 }
-
-
-
-
-
