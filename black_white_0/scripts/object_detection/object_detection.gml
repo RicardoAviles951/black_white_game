@@ -18,7 +18,13 @@ if hit != -4  //if the collision is hitting anything
 	//Creates text box
 	if !instance_exists(o_text_box) and key_enter{
 		instance_create_depth(x,y,-9999,o_text_box);
+		if hit.x > x +16{ hit.image_index = 2;}//Turn left
+		if hit.x < x +16 {hit.image_index = 0;}//Turn Right
+		if hit.y > y +32 {hit.image_index = 1}//Turn down
+		if hit.y < y -32{hit.image_index = 3;} //Turn up
 	}
+	
+	
 	//Logic for determining progression of text box
 if instance_exists(o_text_box){
 	switch(global.state)
@@ -322,7 +328,7 @@ if instance_exists(o_text_box){
 										case 2:
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_alex
-										o_text_box.myText = "Gosh I hate giving speeches... especially about my dead parent. My palms are sweating, is there a tissue around here somewhere? I want to take a nap but I haven't been able to sleep in days.";
+										o_text_box.myText = "Gosh I hate giving speeches... especially about my dead parent. My palms are sweating. Is there a tissue around here somewhere? I want to take a nap but I haven't been able to sleep in days.";
 										break;
 									}
 				}

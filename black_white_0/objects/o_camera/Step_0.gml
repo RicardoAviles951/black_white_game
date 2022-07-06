@@ -22,7 +22,14 @@ switch(cam_state){
 		target = o_tristan;
 		break;
 	}
-	if instance_exists(target) camera_set_view_pos(cam,target.x-(cam_w/2),target.y-(cam_h/2));
+	if instance_exists(target){
+		var _x = target.x-(cam_w/2);
+		var _y = target.y-(cam_h/2);
+		var cur_x = camera_get_view_x(cam);
+		var cur_y = camera_get_view_y(cam);
+		camera_set_view_pos(cam,lerp(cur_x,_x,.1),lerp(cur_y,_y,.1));
+	}
+		
 	break;
 	
 	case camera.cutscene:

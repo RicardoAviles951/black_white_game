@@ -7,10 +7,10 @@ var seq = layer_sequence_create(lay,cam_x,cam_y,myseq);
 layer_sequence_play(seq);
 
 
-//Debug only
+/*//Debug only
 show_debug_message(layer_sequence_get_x(seq));
 show_debug_message(layer_sequence_get_y(seq));
 show_debug_message("cam y = "+string(cam_y));
 show_debug_message("cam x = "+string(cam_x));
-
+*/
 }

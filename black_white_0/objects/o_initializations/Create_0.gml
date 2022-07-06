@@ -24,4 +24,6 @@ global.spawned = false;
 global.park_warp = true;
 global.bath_warp = true;
 global.view_warp = true;
+global.spr_index = noone;
+global.img_index = noone;
 room_goto_next();

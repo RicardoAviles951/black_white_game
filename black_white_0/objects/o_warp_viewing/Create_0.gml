@@ -6,3 +6,4 @@ current_room = room;
 target_room = noone;
 collided = false;
 snd = choose(snd_door_close,snd_door_open);
+changed = false;
