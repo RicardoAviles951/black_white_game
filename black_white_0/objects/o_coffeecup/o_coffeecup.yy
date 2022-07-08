@@ -1,17 +1,14 @@
 {
   "spriteId": {
-    "name": "s_tristan_idle",
-    "path": "sprites/s_tristan_idle/s_tristan_idle.yy",
+    "name": "s_coffee_cup",
+    "path": "sprites/s_coffee_cup/s_coffee_cup.yy",
   },
   "solid": false,
   "visible": true,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "o_interaction_parent",
-    "path": "objects/o_interaction_parent/o_interaction_parent.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -26,18 +23,16 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":4,"eventType":6,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Characters",
-    "path": "folders/Objects/Characters.yy",
+    "name": "ProgressionItems",
+    "path": "folders/Objects/Items/ProgressionItems.yy",
   },
   "resourceVersion": "1.0",
-  "name": "o_tristan",
+  "name": "o_coffeecup",
   "tags": [],
   "resourceType": "GMObject",
 }

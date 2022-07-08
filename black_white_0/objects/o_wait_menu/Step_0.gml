@@ -9,19 +9,23 @@ if pos >= op_length pos = 0;
 if pos< 0 pos = op_length - 1;
 
 if keyboard_check_pressed(vk_space){
+	global.spawned = false;
 	switch(pos){
 		case 0: //Tristan
 			global.state = states.tristan;
+			interact_reset();
 			room_goto(rm_bathroom);
 		break;
 		
 		case 1: //Sam
 			global.state = states.sam;
+			interact_reset();
 			room_goto(rm_reception);
 		break;
 		
 		case 2: // Alex
 			global.state = states.alex;
+			interact_reset();
 			room_goto(rm_viewing);
 		break;
 		case 3:

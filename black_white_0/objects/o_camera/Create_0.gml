@@ -8,6 +8,7 @@ cam_width  = 640;
 cam_height = 360;
 window_width = 1280;
 window_height = 720;
+zoom = 1;
 target = noone;
 
 window_set_size(window_width,window_height);
