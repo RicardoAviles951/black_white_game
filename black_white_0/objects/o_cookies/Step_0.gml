@@ -7,3 +7,4 @@ else{
 	y_size = approach(y_size,1,.1);
 }
 
+sum = (global.tris_cut + global.alex_cut + global.sam_cut);

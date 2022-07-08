@@ -9,14 +9,17 @@ var x_dir = lengthdir_x(34,angle);//These two dir vars will project a collision 
 var y_dir = lengthdir_y(34,angle);
 var hit = collision_line(x,y,x+x_dir,y+y_dir,o_interaction_parent,false,true);//Stores the instance ID of what was detected by the collision line. 
 
-if hit != -4  //if the collision is hitting anything
+if hit != -4  //if the collision line is hitting anything
 {		
 	
-	with(hit){
-		sprite_index = spr_inv;
+	with(hit)
+	{
+		sprite_index = spr_inv; //Set the collided object to its invereted sprite
 	}
-	//Creates text box
-	if !instance_exists(o_text_box) and key_enter{
+	
+	//Creates text box and turns character towards player
+	if !instance_exists(o_text_box) and key_enter
+	{
 		instance_create_depth(x,y,-9999,o_text_box);
 		if hit.x > x +16{ hit.image_index = 2;}//Turn left
 		if hit.x < x +16 {hit.image_index = 0;}//Turn Right
@@ -25,11 +28,11 @@ if hit != -4  //if the collision is hitting anything
 	}
 	
 	
-	//Logic for determining progression of text box
+//Logic for determining progression of text box
 if instance_exists(o_text_box){
 	switch(global.state)
 	{
-		case states.ghost:
+		case states.ghost://When playing as the ghost
 			if instance_exists(o_alex){
 				if (hit == o_alex.id){
 		
@@ -178,12 +181,12 @@ if instance_exists(o_text_box){
 			}
 		break;
 		
-		case states.alex:
+		case states.alex://When playing as Alex
 			if instance_exists(o_tristan){
 				if (hit == o_tristan.id){
-					if o_tristan.interacted_with == false{
+					if global.interact_tristan == false{
 						global.alex_goals +=1;
-						o_tristan.interacted_with = true;
+						global.interact_tristan = true;
 					}
 					switch(o_text_box.counter)
 									{
@@ -203,9 +206,9 @@ if instance_exists(o_text_box){
 			}
 			if instance_exists(o_sam){
 				if (hit == o_sam.id){
-					if o_sam.interacted_with == false{
+					if global.interact_sam == false{
 						global.alex_goals +=1;
-						o_sam.interacted_with = true;
+						global.interact_sam = true;
 					}
 					switch(o_text_box.counter)
 									{
@@ -225,9 +228,9 @@ if instance_exists(o_text_box){
 			}
 			if instance_exists(o_casket){
 				if (hit == o_casket.id){
-					if o_casket.interacted_with == false{
+					if global.interact_casket == false{
 						global.alex_goals +=1;
-						o_casket.interacted_with = true;
+						global.interact_casket = true;
 					}
 					switch(o_text_box.counter)
 									{
@@ -252,9 +255,9 @@ if instance_exists(o_text_box){
 			}
 			if instance_exists(o_guestbook){
 				if (hit == o_guestbook.id){
-					if o_guestbook.interacted_with == false{
+					if global.interact_guestbook == false{
 						global.alex_goals +=1;
-						o_guestbook.interacted_with = true;
+						global.interact_guestbook = true;
 					}
 					switch(o_text_box.counter)
 									{
@@ -307,10 +310,6 @@ if instance_exists(o_text_box){
 			}
 			if instance_exists(o_pamphlet){
 				if (hit == o_pamphlet.id){
-					if o_pamphlet.interacted_with == false{
-						global.alex_goals +=1;
-						o_pamphlet.interacted_with = true;
-					}
 					switch(o_text_box.counter)
 									{
 										case 0:
@@ -335,12 +334,12 @@ if instance_exists(o_text_box){
 			}		
 		break;
 					
-		case states.sam:
+		case states.sam://When playing as Sam
 			if instance_exists(o_tristan){
 				if (hit == o_tristan.id){
-					if o_tristan.interacted_with == false{
+					if global.interact_tristan == false{
 						global.sam_goals +=1;
-						o_tristan.interacted_with = true;
+						global.interact_tristan = true;
 					}
 					switch(o_text_box.counter){
 						case 0:
@@ -361,9 +360,9 @@ if instance_exists(o_text_box){
 			}
 			if instance_exists(o_alex){
 					if (hit == o_alex.id){
-						if o_alex.interacted_with == false{
+						if global.interact_alex == false{
 							global.sam_goals +=1;
-							o_alex.interacted_with = true;
+							global.interact_alex = true;
 						}
 						switch(o_text_box.counter){
 							case 0:
@@ -382,19 +381,19 @@ if instance_exists(o_text_box){
 				}
 			if instance_exists(o_casket){	
 				if (hit == o_casket.id){
-					if o_casket.interacted_with == false{
+					if global.interact_casket== false{
 						global.sam_goals +=1;
-						o_casket.interacted_with = true;
+						global.interact_casket = true;
 					}
 					switch(o_text_box.counter){
-						case 1:
+						case 0:
 							o_text_box.font = f_dialogue;
 							o_text_box.sprite = s_portrait_sam;
 							o_text_box.myText = "You look so peaceful, Jude. Almost like you did when sleeping off a hangover back in college... but with more wrinkles this time.";
 							next_step();
 						break;
 					
-						case 2:
+						case 1:
 							o_text_box.font = f_internal;
 							o_text_box.sprite = s_portrait_sam;
 							o_text_box.myText ="So this is really it? You're just gonna leave me here on earth by myself with no one to secretly hate F.R.I.E.N.D.S. with?! How could you do this to me after all these years, we've all been hunting our whole lives.. You should have been more careful, there are people here that need you!";
@@ -404,9 +403,9 @@ if instance_exists(o_text_box){
 			}
 			if instance_exists(o_guestbook){	
 				if (hit == o_guestbook.id){
-					if o_guestbook.interacted_with == false{
+					if global.interact_guestbook == false{
 						global.sam_goals +=1;
-						o_guestbook.interacted_with = true;
+						global.interact_guestbook = true;
 					}
 					switch(o_text_box.counter){
 						case 0:
@@ -460,10 +459,6 @@ if instance_exists(o_text_box){
 			}//End of instance exists check
 			if instance_exists(o_pamphlet){	
 				if (hit == o_pamphlet.id){
-					if o_pamphlet.interacted_with == false{
-						global.sam_goals +=1;
-						o_pamphlet.interacted_with = true;
-					}
 					switch(o_text_box.counter){
 										case 0:
 										o_text_box.font = f_description;
@@ -479,12 +474,12 @@ if instance_exists(o_text_box){
 					}
 			}
 		break;
-		case states.tristan:
+		case states.tristan://When playing as Tristan
 			if instance_exists(o_alex){
 				if (hit == o_alex.id){
-					if o_alex.interacted_with == false{
+					if global.interact_alex == false{
 						global.tris_goals +=1;
-						o_alex.interacted_with = true;
+						global.interact_alex = true;
 					}
 					switch(o_text_box.counter){
 						case 0:
@@ -503,9 +498,9 @@ if instance_exists(o_text_box){
 			}
 			if instance_exists(o_sam){	
 				if (hit == o_sam.id){
-					if o_sam.interacted_with == false{
+					if global.interact_sam == false{
 						global.tris_goals +=1;
-						o_sam.interacted_with = true;
+						global.interact_sam = true;
 					}
 					switch(o_text_box.counter){
 						case 0:
@@ -524,9 +519,9 @@ if instance_exists(o_text_box){
 			}
 			if instance_exists(o_casket){	
 				if (hit == o_casket.id){
-					if o_casket.interacted_with == false{
+					if global.interact_casket == false{
 						global.tris_goals +=1;
-						o_casket.interacted_with = true;
+						global.interact_casket = true;
 					}
 					switch(o_text_box.counter){
 						case 0:
@@ -546,9 +541,9 @@ if instance_exists(o_text_box){
 			}
 			if instance_exists(o_guestbook){	
 				if (hit == o_guestbook.id){
-					if o_guestbook.interacted_with == false{
+					if global.interact_guestbook == false{
 						global.tris_goals +=1;
-						o_guestbook.interacted_with = true;
+						global.interact_guestbook = true;
 					}
 					switch(o_text_box.counter){
 						case 0:
@@ -602,10 +597,6 @@ if instance_exists(o_text_box){
 			}
 			if instance_exists(o_pamphlet){	
 				if (hit == o_pamphlet.id){
-					if o_pamphlet.interacted_with == false{
-						global.tris_goals +=1;
-						o_pamphlet.interacted_with = true;
-					}
 					switch(o_text_box.counter){
 										case 0:
 										o_text_box.font = f_description;
@@ -622,9 +613,6 @@ if instance_exists(o_text_box){
 			}
 		break;
 		}//End of switch on global.state
-
-	
-	
 	}// End of if textbox exists
 }//End of if hit 
 
@@ -632,12 +620,6 @@ if instance_exists(o_text_box){
 if instance_exists(o_text_box) and distance_to_object(hit) > 128{
 	instance_destroy(o_text_box);	
 }
-var c = c_white;
-if hit c = c_red;
-draw_line_color(x,y,x+x_dir,y+y_dir,c,c);
-o_interaction_parent.image_blend = c_white;
-	with(hit)
-	{
-		image_blend = c_white;
-	}
+
+
 }

@@ -17,6 +17,7 @@ switch (global.state) {
 			break;
 			case rooms.viewing:
 				if global.spawned == false{
+					global.visited_alex = true;
 					spawner(o_alex,288,188);
 					global.spawned = true;
 				}
@@ -28,6 +29,7 @@ switch (global.state) {
 		 switch (global.rm) {
 			case rooms.reception:
 				if global.spawned == false{
+					global.visited_sam = true;
 					spawner(o_sam,436,336);
 					global.spawned = true;
 				}
@@ -42,6 +44,7 @@ switch (global.state) {
 		 switch (global.rm) {
 			case rooms.bathroom:
 			if global.spawned == false{
+				global.visited_tristan = true;
 				spawner(o_tristan,160,160);
 				global.spawned = true;
 			}
