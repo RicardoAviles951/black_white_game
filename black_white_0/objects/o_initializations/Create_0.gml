@@ -12,7 +12,8 @@ enum rooms{
 	viewing,
 	bathroom,
 	wait,
-	car
+	car,
+	cut_parking
 }
 global.rm = noone;
 global.state = states.ghost;
@@ -34,6 +35,8 @@ global.tris_cut = false;
 global.sam_cut  = false;
 //Camera vars
 global.target = noone;
+
+global.tutorial = true;
 
 //Spawn and warp vars
 global.spawned = false;

@@ -20,9 +20,7 @@ if !instance_exists(o_death) and !instance_exists(o_text_box){
 }
 }
 else{
-	image_speed = 0;
-	x = room_width +400;
-	y = 0;
+	
 }
 //("Delta x = "+string(sign(delta_x)));
 //show_debug_message("Delta y = "+string(sign(delta_y)));

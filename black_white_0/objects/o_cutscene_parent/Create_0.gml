@@ -7,7 +7,7 @@ enum cutSceneStates
 	Active,
 	Paused 
 }
-number = 0
-currentState = cutSceneStates.Active;
 
+currentState = cutSceneStates.Active;
+txt = "";
 timer =0;

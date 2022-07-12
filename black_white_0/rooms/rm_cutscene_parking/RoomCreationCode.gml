@@ -1,0 +1,1 @@
+global.rm = rooms.cut_parking;
