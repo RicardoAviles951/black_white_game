@@ -22,6 +22,8 @@
     {"instances":[
         {"properties":[],"isDnd":false,"objectId":{"name":"o_warp_park","path":"objects/o_warp_park/o_warp_park.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":766.0,"y":224.0,"resourceVersion":"1.0","name":"inst_4DEFE9CB","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"o_player","path":"objects/o_player/o_player.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":192.0,"y":128.0,"resourceVersion":"1.0","name":"inst_6AD2B4EE","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"o_tutorial","path":"objects/o_tutorial/o_tutorial.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":224.0,"y":-96.0,"resourceVersion":"1.0","name":"inst_31D10D2E","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"o_tut_collider","path":"objects/o_tut_collider/o_tut_collider.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":2.5,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":448.0,"y":288.0,"resourceVersion":"1.0","name":"inst_6415A26C","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":100,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Instances","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
         {"properties":[],"isDnd":false,"objectId":{"name":"o_bounds","path":"objects/o_bounds/o_bounds.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":6.0625,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":972.0,"y":166.0,"resourceVersion":"1.0","name":"inst_61DDF35F","tags":[],"resourceType":"GMRInstance",},
@@ -66,6 +68,8 @@
     {"name":"inst_4DEFE9CB","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_6AD2B4EE","path":"rooms/rm_parking/rm_parking.yy",},
     {"name":"inst_3220E453","path":"rooms/rm_parking/rm_parking.yy",},
+    {"name":"inst_31D10D2E","path":"rooms/rm_parking/rm_parking.yy",},
+    {"name":"inst_6415A26C","path":"rooms/rm_parking/rm_parking.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

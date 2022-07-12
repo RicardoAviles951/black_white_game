@@ -45,9 +45,11 @@ if choice{
 var _len = string_length(text[text_current]);
 if (char_current < _len)
     {
+	//	if !audio_is_playing(snd_txt) audio_play_sound(snd_txt,1,false);
+		//audio_sound_pitch(snd_txt,random_range(1.5,2));
     char_current += char_speed;
     }
 	
 var _str = string_copy(text[text_current], 1, char_current);
 //draw_text_ext(guiW/3, guiH*5/8+16,_str,38,width - (guiW*5/24)-8);
-draw_text(guiW/3, guiH*5/8+16,_str);
+draw_text_color(guiW/3, guiH*5/8+20,_str,c,c,c,c,1);
