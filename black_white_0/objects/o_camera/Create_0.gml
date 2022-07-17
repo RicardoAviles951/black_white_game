@@ -10,7 +10,12 @@ window_width = 1280;
 window_height = 720;
 zoom = 1;
 target = noone;
-
+zoom_in = false
+enum zm{
+	zoom_in,
+	zoom_out
+}
+zoom_mode = zm.zoom_in;
 window_set_size(window_width,window_height);
 surface_resize(application_surface,window_width,window_height);
 alarm[0] = 1;

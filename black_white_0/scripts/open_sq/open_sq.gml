@@ -1,7 +1,7 @@
-function open_sq(){
+function open_sq(sq){
 var cam_x = camera_get_view_x(view_camera[0]);
 var cam_y = camera_get_view_y(view_camera[0]);
-var myseq = sequence_get(sq_fadeIn);
+var myseq = sequence_get(sq);
 var lay = layer_create(-9999,"transitions");
 var seq = layer_sequence_create(lay,cam_x,cam_y,myseq);
 layer_sequence_play(seq);

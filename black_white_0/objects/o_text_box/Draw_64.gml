@@ -42,7 +42,7 @@ if choice{
 	draw_text(guiW*2/3-32,guiH*7/8+32,"Press SHIFT for next page");
 }
 
-var _len = string_length(text[text_current]);
+ _len = string_length(text[text_current]);
 if (char_current < _len)
     {
 	//	if !audio_is_playing(snd_txt) audio_play_sound(snd_txt,1,false);
