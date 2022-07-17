@@ -20,11 +20,22 @@ if hit != -4  //if the collision line is hitting anything
 	//Creates text box and turns character towards player
 	if !instance_exists(o_text_box) and key_enter
 	{
+		//Time source that creates the text box 1 frame later to ensure no interfence with going through cases.
+		var nxt = function()
+		{
 		instance_create_depth(x,y,-9999,o_text_box);
-		if hit.x > x +16{ hit.image_index = 2;}//Turn left
-		if hit.x < x +16 {hit.image_index = 0;}//Turn Right
-		if hit.y > y +32 {hit.image_index = 1}//Turn down
-		if hit.y < y -32{hit.image_index = 3;} //Turn up
+		}
+		var time = time_source_create(time_source_global,1,time_source_units_frames,nxt);
+		time_source_start(time);
+		
+		if global.state !=states.ghost
+		{
+			//Contextual system that turns the target towards the player.
+			if hit.x > x +16{ hit.image_index = 2;}//Turn left
+			if hit.x < x +16 {hit.image_index = 0;}//Turn Right
+			if hit.y > y +32 {hit.image_index = 1}//Turn down
+			if hit.y < y -32{hit.image_index = 3;} //Turn up
+		}
 	}
 	
 	
@@ -50,6 +61,7 @@ if instance_exists(o_text_box){
 									break;
 									case 2:
 									o_text_box.myText ="It used to drive me crazy how you always made a point of telling me where your will was, and your bank accounts, and all the important documents. But... now I guess I'm grateful that you did.";
+									txt_speedup();
 									break;
 								}
 				} 
@@ -70,7 +82,7 @@ if instance_exists(o_text_box){
 									break;
 									case 2:
 									o_text_box.myText = "...And Alex, what are they going to do without you? You were the only family they had--the only home...";
-									next_step();
+									txt_speedup();
 									break;
 								}
 				
@@ -93,7 +105,7 @@ if instance_exists(o_text_box){
 								
 									case 2:
 									o_text_box.myText = "I wish things had been different between us, too bad they were dissapointing right up until...";
-									next_step();
+									txt_speedup();
 									break;
 								}
 				}
@@ -104,15 +116,30 @@ if instance_exists(o_text_box){
 					switch(o_text_box.counter)
 								{
 												case 0:
+												o_player.idle = true;
 												o_text_box.sprite = s_portrait_casket;												
 												o_text_box.myText ="As you approach the casket at the center of the room, it grows difficult to move. You are too cold and too hot; it is hard to breathe and... beginning to smell of... death? The air grows more putrid every second.";
+												o_fx_ctr.vignette = true;
+												o_camera.cam_state = camera.cutscene;
 												next_step();
 												break;
 												case 1: 
 												o_text_box.sprite = s_portrait_ghost;
 												o_text_box.font = f_internal;
 												o_text_box.myText = "I have to know what's going on here! Whose funeral is this...? This... this can't be, I can't be...";
-												o_player.death = true;
+												//o_player.death = true;
+												next_step();
+												break;
+												
+												case 2:
+												instance_destroy(o_text_box);
+												o_fx_ctr.vignette = false;
+												o_fx_ctr.zoom = true;
+												var time = function(){
+													room_goto(rm_cutscene_thewait);
+												}
+												var thewait = time_source_create(time_source_global,3,time_source_units_seconds,time);
+												time_source_start(thewait);
 												break;
 											}
 				}
@@ -156,6 +183,7 @@ if instance_exists(o_text_box){
 												o_text_box.sprite = s_portrait_ghost;
 												o_text_box.font = f_internal;
 												o_text_box.myText ="Why the !?#*% can't I read anything?!";
+												txt_speedup();
 												break;
 								}
 				}	
@@ -179,7 +207,24 @@ if instance_exists(o_text_box){
 								}
 				}
 			}
-		break;
+			if instance_exists(o_message){
+				if(hit == o_message.id){
+					switch(o_text_box.counter)
+								{
+									case 0:
+										with(o_text_box){
+											sprite = s_pixel;
+											font = f_description;
+											myText = "\nWelcome to The Wait. We are here to help you with your transition";
+										}
+										txt_speedup();
+									break;
+									
+								}
+				
+				}
+			}
+	break;
 		
 		case states.alex://When playing as Alex
 			if instance_exists(o_tristan){
@@ -200,6 +245,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_alex;
 										o_text_box.myText = "How comforting as usual, Tristan."
+										txt_speedup();
 										break;
 									}
 				}
@@ -222,6 +268,7 @@ if instance_exists(o_text_box){
 										case 1: 
 										o_text_box.font = f_internal;
 										o_text_box.myText = "How does Sam always know how to make me feel a little better?";
+										txt_speedup();
 										break;
 									}
 				}
@@ -249,6 +296,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_alex;
 										o_text_box.myText = "...You never did tell me if you knew from personal experience about the riding lawnmower. Maybe Sam knows."; 
+										txt_speedup();
 										break;
 									}
 				}
@@ -304,6 +352,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_alex;
 										o_text_box.myText = "I thought I knew everything about what was going on in my life, but now... I dont know what I want, let alone what to do next.";
+										txt_speedup();
 										break;
 									}
 				}
@@ -328,6 +377,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_alex
 										o_text_box.myText = "Gosh I hate giving speeches... especially about my dead parent. My palms are sweating. Is there a tissue around here somewhere? I want to take a nap but I haven't been able to sleep in days.";
+										txt_speedup();
 										break;
 									}
 				}
@@ -352,6 +402,7 @@ if instance_exists(o_text_box){
 							o_text_box.font = f_internal;
 							o_text_box.sprite = s_portrait_sam;
 							o_text_box.myText = "I know we were discrete but it still stings, especially now. ";
+							txt_speedup();						
 						break;
 					}
 
@@ -375,6 +426,7 @@ if instance_exists(o_text_box){
 								o_text_box.font = f_internal;
 								o_text_box.sprite = s_portrait_sam;
 								o_text_box.myText = "Beautiful, smart, funny, talented...amazing";
+								txt_speedup();
 							break;
 						}
 					}
@@ -397,6 +449,7 @@ if instance_exists(o_text_box){
 							o_text_box.font = f_internal;
 							o_text_box.sprite = s_portrait_sam;
 							o_text_box.myText ="So this is really it? You're just gonna leave me here on earth by myself with no one to secretly hate F.R.I.E.N.D.S. with?! How could you do this to me after all these years, we've all been hunting our whole lives.. You should have been more careful, there are people here that need you!";
+							txt_speedup();
 						break;
 					}
 				}
@@ -453,6 +506,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_sam;
 										o_text_box.myText = "Christ, the kiddo has already been through so much... and now this. Both parents gone before graduation and a farm to take care of. Someone needs to be there for them.";
+										txt_speedup();
 						break;
 					}//end of switch on o_text_box.coutner
 				}//End of if statement for hit
@@ -469,6 +523,7 @@ if instance_exists(o_text_box){
 									
 										case 1: 
 										o_text_box.myText = "(next page) Poem about death and life\n'We all get a single spoonful of life, a little salt, a little honey too. Taste the whole thing the best you can for sooner than we'd ever like all that's left is the taste of clean silver.'";
+										txt_speedup();
 										break;
 						}
 					}
@@ -492,6 +547,7 @@ if instance_exists(o_text_box){
 							o_text_box.font = f_internal;
 							o_text_box.sprite = s_portrait_tristan;
 							o_text_box.myText = "I bet they were just looking for a way to get out of going to that graduation.";
+							txt_speedup();
 						break;
 					}
 				}
@@ -513,6 +569,7 @@ if instance_exists(o_text_box){
 							o_text_box.font = f_internal;
 							o_text_box.sprite = s_portrait_tristan;
 							o_text_box.myText = "Sure I will, Sam. Sure I will. As soon as I get my cut of the farm, my #@% is on its way to Tahiti.";
+							txt_speedup();
 						break;
 					}
 				}
@@ -535,6 +592,7 @@ if instance_exists(o_text_box){
 							o_text_box.font = f_internal;
 							o_text_box.sprite = s_portrait_tristan;
 							o_text_box.myText ="They never really tried to love me, they were just pretending to...if I had known this was going to happen right now, I wouldnt have pushed for the divorce";
+							txt_speedup();
 						break;
 					}
 				}
@@ -591,6 +649,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_tristan;
 										o_text_box.myText = "I never really liked your kid but this whole situation is devastating. I never wanted to see them like this.";
+										txt_speedup();
 						break;
 					}
 				}
@@ -607,6 +666,7 @@ if instance_exists(o_text_box){
 									
 										case 1: 
 										o_text_box.myText = "(next page) Poem about death and life\n'We all get a single spoonful of life, a little salt, a little honey too. Taste the whole thing the best you can for sooner than we'd ever like all that's left is the taste of clean silver.'";
+										txt_speedup();
 										break;
 						}
 				}

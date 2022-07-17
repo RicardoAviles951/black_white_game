@@ -1,1 +1,1 @@
-alpha = 0;
+if global.tris_cut == true alpha = 1; else alpha = 0;
