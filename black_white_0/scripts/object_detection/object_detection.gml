@@ -213,9 +213,9 @@ if instance_exists(o_text_box){
 								{
 									case 0:
 										with(o_text_box){
-											sprite = s_pixel;
+											sprite = s_portrait_note;
 											font = f_description;
-											myText = "\nWelcome to The Wait. We are here to help you with your transition";
+											myText = "\nWelcome to The Wait. We are here to help you with your transition.";
 										}
 										txt_speedup();
 									break;
@@ -233,44 +233,79 @@ if instance_exists(o_text_box){
 						global.alex_goals +=1;
 						global.interact_tristan = true;
 					}
-					switch(o_text_box.counter)
-									{
-										case 0:
-										o_text_box.font = f_dialogue;
-										o_text_box.sprite = s_portrait_tristan;
-										o_text_box.myText = "You're gonna do just great kid. You got your education, that should help you figure it out despite the economy doing whatever it pleases.";
-										next_step();
-										break;
-										case 1:
-										o_text_box.font = f_internal;
-										o_text_box.sprite = s_portrait_alex;
-										o_text_box.myText = "How comforting as usual, Tristan."
-										txt_speedup();
-										break;
-									}
-				}
-			}
+					if global.rm != rooms.ending
+					{	
+				
+						switch(o_text_box.counter)
+										{
+											case 0:
+											o_text_box.font = f_dialogue;
+											o_text_box.sprite = s_portrait_tristan;
+											o_text_box.myText = "You're gonna do just great kid. You got your education, that should help you figure it out despite the economy doing whatever it pleases.";
+											next_step();
+											break;
+											case 1:
+											o_text_box.font = f_internal;
+											o_text_box.sprite = s_portrait_alex;
+											o_text_box.myText = "How comforting as usual, Tristan."
+											txt_speedup();
+											break;
+										}// swtich on txt box counter
+					
+					}
+					else
+					{
+						o_alex.idle = true;
+						with(o_text_box){
+							txt_mode = mode.interactive;
+							spr_ask = s_portrait_tristan;
+							myText = "Do you want to go with me to get a coffee or something? You look like a wreck.";
+							choice[0] = "Sure, I'm exhausted maybe more coffee will help.";
+							choice[1] = "I'd rather go back to my room and look at the wall.";
+							choice[2] = "No thanks, maybe we can talk after I've had some rest.";
+						}
+						
+						
+						
+					}
+				}//hit
+			}//inst exist
 			if instance_exists(o_sam){
 				if (hit == o_sam.id){
 					if global.interact_sam == false{
 						global.alex_goals +=1;
 						global.interact_sam = true;
 					}
-					switch(o_text_box.counter)
-									{
-										case 0:
-										o_text_box.font = f_dialogue;
-										o_text_box.sprite = s_portrait_sam;
-										o_text_box.myText = "Once all these hard feelings settle down you'll have an easier time listening to yourself, you'll know what you want and who you want to be.";
-										next_step();
-										break;
+					if global.rm != rooms.ending
+					{
+						switch(o_text_box.counter)
+										{
+											case 0:
+											o_text_box.font = f_dialogue;
+											o_text_box.sprite = s_portrait_sam;
+											o_text_box.myText = "Once all these hard feelings settle down you'll have an easier time listening to yourself, you'll know what you want and who you want to be.";
+											next_step();
+											break;
 									
-										case 1: 
-										o_text_box.font = f_internal;
-										o_text_box.myText = "How does Sam always know how to make me feel a little better?";
-										txt_speedup();
-										break;
-									}
+											case 1: 
+											o_text_box.font = f_internal;
+											o_text_box.myText = "How does Sam always know how to make me feel a little better?";
+											txt_speedup();
+											break;
+										}
+					}
+					else
+					{
+						o_alex.idle = true;
+						with(o_text_box){
+							txt_mode = mode.interactive;
+							spr_ask = s_portrait_sam;
+							myText = "Hey, they opened some kinda new Mexican-Fusion place up main street while you were away at school, can I buy you a cat-fish taco? ";
+							choice[0] = "No thanks, maybe some other time soon?";
+							choice[1] = "No, I'm really tired.";
+							choice[2] = "I'd like that. Can I ask you more about what Jude was like growing up?";
+						}
+					}
 				}
 			}
 			if instance_exists(o_casket){
