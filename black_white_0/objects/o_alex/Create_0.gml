@@ -6,3 +6,4 @@ idle = false;
 spr_inv = s_alex_inverted;
 delta_x = x - xprevious;
 delta_y = y - yprevious;
+last_stop = 0;

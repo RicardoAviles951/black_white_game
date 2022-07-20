@@ -14,7 +14,9 @@ enum rooms{
 	wait,
 	car,
 	cut_parking,
-	cut_wait
+	cut_wait,
+	ending,
+	ending_2
 }
 global.rm = noone;
 global.state = states.ghost;

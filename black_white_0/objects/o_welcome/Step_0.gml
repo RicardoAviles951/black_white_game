@@ -54,8 +54,8 @@ switch(step){
 	if !instance_exists(o_text_box){
 		tb = instance_create_depth(x,y,-9999,o_text_box);
 	}
-		tb.sprite = s_pixel;
-		tb.font = f_description;
+		tb.sprite = s_portrait_note;
+		tb.font   = f_description;
 		tb.myText = "\nThere is a note for you on the coffee table.";
 	
 	if keyboard_check_pressed(vk_enter){
