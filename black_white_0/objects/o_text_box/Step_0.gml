@@ -12,9 +12,23 @@ else
 txt_finished = false;	
 }
 
+if draw{
+emote_create(target_y,curve,spd,emote);
+}
+else
+{
+percent = 0;
+alpha = 0;
 
-if txt_mode == mode.interactive{
-get_input()
+}
+
+switch(txt_mode){
+	case mode.normal:
+	
+	break;
+	
+	case mode.interactive:
+		get_input()
 var len = array_length(choice);
 pos+= menu_down - menu_up;
 //resets position based on array length
@@ -48,9 +62,18 @@ if key_enter{
 		break;
 	}
 }
-
-
+	break;
+	
 }
+if instance_exists(o_wallet){
+	with(o_wallet){
+		allowed = false;
+	}
+}
+
+
+
+
 
 //DEBUG ONLY
 //Left

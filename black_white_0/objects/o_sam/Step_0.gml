@@ -14,4 +14,8 @@ if global.sam_goals >=4 and!instance_exists(o_text_box){
 		instance_create_depth(x,y,-99999,o_goal_message);
 	}
 }
+if !instance_exists(o_wallet) and key_wallet{
+	instance_create_depth(x,y,-9999,o_wallet);
+	idle = true;
+}
 }

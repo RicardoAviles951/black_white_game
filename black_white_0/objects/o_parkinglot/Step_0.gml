@@ -20,12 +20,26 @@ if(currentState == cutSceneStates.Active)
 		tb.font = f_dialogue;
 		tb.myText = "We haven't spoken in days. Why won't you speak to me...?";
 		tb.sprite = s_portrait_ghost;
+		with o_text_box{
+			emote = s_emote_sad;
+			spd = 30;
+			curve = anim_smoothland;
+			draw = true;
+			
+		}
+		
 		cut_step();
 		break;
 		
 		case 2:
 		tb.font = f_internal;
 		tb.myText = "What did I do to upset them this time? It... has been days, hasn't it?"
+		with o_text_box{
+			emote = s_emote_question;
+			spd = 30;
+			curve = anim_smoothland;
+			draw = true;
+		}
 		cut_step();
 		break;
 		
@@ -35,6 +49,12 @@ if(currentState == cutSceneStates.Active)
 		o_alex.image_index = 3;
 		tb.sprite = s_portrait_alex;
 		tb.myText = "I can't believe how hot it is here; way too hot for dress clothes.";
+			with o_text_box{
+			emote = s_emote_angry;
+			spd = 120;
+			curve = anim_bounce;
+			draw = true;
+		}
 		cut_step();
 		break;
 		
@@ -55,6 +75,12 @@ if(currentState == cutSceneStates.Active)
 		case 6:
 		tb.font = f_internal;
 		tb.myText = "It doesn't seem that hot to me, but... Alex IS sweating..."
+			with o_text_box{
+			emote = s_emote_question;
+			spd = 30;
+			curve = anim_smoothland;
+			draw = true;
+		}
 		cut_step();
 		break;
 		

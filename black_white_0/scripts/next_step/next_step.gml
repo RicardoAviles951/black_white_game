@@ -7,6 +7,7 @@ if keyboard_check_pressed(vk_enter)
 			char_current = 1;
 			char_speed = .5;
 			counter+=1;	
+			o_text_box.draw = false;
 		}
 		else
 		{
