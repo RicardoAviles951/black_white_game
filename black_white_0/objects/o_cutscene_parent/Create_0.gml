@@ -11,3 +11,14 @@ enum cutSceneStates
 currentState = cutSceneStates.Active;
 txt = "";
 timer =0;
+var guiW = display_get_gui_width();
+var guiH = display_get_gui_height();
+alpha  = 0;
+text = "";
+spr = s_pixel;
+horz_align = fa_center;
+x_pos = guiW/2;
+
+//Debug only
+y_adj = 0
+x_adj = 0;

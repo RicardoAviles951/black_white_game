@@ -1,0 +1,2 @@
+
+currentStep +=1;

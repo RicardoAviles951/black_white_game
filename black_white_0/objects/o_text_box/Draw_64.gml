@@ -15,6 +15,7 @@ switch(txt_mode){
 
 	//Draws sprite portrait
 	draw_sprite_ext(sprite,0,guiW/4-28,guiH*3/4+28,scale,scale,0,c,1);
+
 	//Draw the names
 		switch(sprite){
 			case s_portrait_alex:
@@ -48,6 +49,7 @@ switch(txt_mode){
 	var _str = string_copy(text[text_current], 1, char_current);
 	//draw_text_ext(guiW/3, guiH*5/8+16,_str,38,width - (guiW*5/24)-8);
 	draw_text_color(guiW/3, guiH*5/8+20,_str,c,c,c,c,1);
+	
 
 break;
 

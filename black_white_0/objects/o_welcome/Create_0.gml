@@ -15,6 +15,7 @@ text_width = 640;
 char_current = 1;
 char_speed = .50;
 text[text_current] = string_wrap(text[text_current], text_width);
+_len = string_length(text[text_current]);
 step = 0;
 alarm[0] = 120;
 if audio_is_playing(snd_wait_bell) audio_sound_gain(snd_wait_bell,0,2000);

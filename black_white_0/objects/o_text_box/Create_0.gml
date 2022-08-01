@@ -28,6 +28,19 @@ choice[1] = "Choice B";
 choice[2] = "Choice C";
 
 pos = 0;
+percent = 0;
+alpha = 0;
+var guiW = display_get_gui_width();
+var guiH = display_get_gui_height();
+//Animation curves
+curve = anim_smoothland;
+target_x = guiW/4+32;
+target_y = guiH*3/4;
+spd = 30;
+emote = s_emote_love;
+draw = false;
+grw = 0;
+y_pos = 0;
 
 //Debug only
 y_adj = 0

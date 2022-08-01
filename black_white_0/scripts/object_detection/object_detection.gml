@@ -38,7 +38,8 @@ if hit != -4  //if the collision line is hitting anything
 		}
 	}
 	
-	
+var guiW = display_get_gui_width();
+var guiH = display_get_gui_height();
 //Logic for determining progression of text box
 if instance_exists(o_text_box){
 	switch(global.state)
@@ -50,16 +51,37 @@ if instance_exists(o_text_box){
 					switch(o_text_box.counter)
 								{
 									case 0:
+									o_text_box.sprite = s_portrait_ghost;
+									o_text_box.font = f_internal;
+									o_text_box.myText = "Alex... I want more than anything to see you cross that graduation stage... to see you chase your dreams, become a capable powerful adult, even run the farm if that's what you really want...";
+									with(o_text_box){
+										emote = s_emote_sad;
+										target_y = guiH*3/4;
+										spd = 60;
+										curve = anim_smoothland;
+										draw = true;
+									}
+									next_step();
+									
+									break;
+									
+									case 1:
 									o_text_box.sprite = s_portrait_alex;
 									o_text_box.font = f_dialogue;
 									o_text_box.myText = "I know in theory that they loved me but I just don't feel it... I'm, so tired.";
 									next_step();
 									break;
-									case 1: 
+									case 2: 
 									o_text_box.myText = "Why did this have to happen now?... I know my parents are going to die before me but right now!?";
+									with(o_text_box){
+										emote = s_emote_angry;
+										spd = 60;
+										curve = anim_smoothland;
+										draw = true;
+									}
 									next_step();
 									break;
-									case 2:
+									case 3:
 									o_text_box.myText ="It used to drive me crazy how you always made a point of telling me where your will was, and your bank accounts, and all the important documents. But... now I guess I'm grateful that you did.";
 									txt_speedup();
 									break;
@@ -71,16 +93,29 @@ if instance_exists(o_text_box){
 					switch(o_text_box.counter)
 								{
 									case 0:
+									o_text_box.sprite = s_portrait_ghost;
+									o_text_box.font = f_internal;
+									o_text_box.myText ="Oh, Sammy... you were always so much more than a friend.";
+									with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_sad;
+									draw = true;
+									}
+									next_step();
+									break;
+									
+									case 1:
 									o_text_box.sprite = s_portrait_sam;
 									o_text_box.font = f_dialogue;
 									o_text_box.myText = "We had our fights but it meant so much to me when they stayed with me through my initial health crisis.";
 									next_step();
 									break;
-									case 1:
+									case 2:
 									o_text_box.myText = "I would have done anything for this to end differently... ";
 									next_step();
 									break;
-									case 2:
+									case 3:
 									o_text_box.myText = "...And Alex, what are they going to do without you? You were the only family they had--the only home...";
 									txt_speedup();
 									break;
@@ -93,18 +128,42 @@ if instance_exists(o_text_box){
 					switch(o_text_box.counter)
 								{
 									case 0:
+									o_text_box.sprite = s_portrait_ghost;
+									o_text_box.font = f_internal;
+									o_text_box.myText ="You are so beautiful, but I never did figure out how to thaw your heart.";
+									with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_brokenheart;
+									draw = true;
+									}
+									next_step();
+									break;
+									case 1:
 									o_text_box.sprite = s_portrait_tristan;
 									o_text_box.font = f_dialogue;
 									o_text_box.myText = "Why couldn't they have been more careful and saved me all this extra emotional turmoil.  I didn't want to deal with all this! I just wanted to take my share and go to a beach.";
+									with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_angry;
+									draw = true;
+									}
 									next_step();
 								break;
-									case 1:
+									case 2:
 									o_text_box.myText = "I was always telling them 'be sure to take better care of your cows next time!" ;
 									next_step();
 									break;
 								
-									case 2:
+									case 3:
 									o_text_box.myText = "I wish things had been different between us, too bad they were dissapointing right up until...";
+									with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_sad;
+									draw = true;
+									}
 									txt_speedup();
 									break;
 								}
@@ -151,14 +210,20 @@ if instance_exists(o_text_box){
 												case 0:
 												o_text_box.sprite = s_portrait_guestbook;
 												o_text_box.font = f_wingdings;
-												//o_text_box.choice = true;
 												o_text_box.myText ="Tristan's Entry\n'I will never forget the way you looked at me when we were'";
+												
 												next_step();
 												break;
 												case 1:
 												o_text_box.sprite = s_portrait_ghost;
 												o_text_box.font = f_internal;
 												o_text_box.myText ="Why can't I read this...?"
+												with (o_text_box){
+												curve = anim_smoothland;
+												spd = 30;
+												emote = s_emote_exclamation;
+												draw = true;
+												}
 												next_step();
 												break;
 												case 2:
@@ -171,6 +236,12 @@ if instance_exists(o_text_box){
 												o_text_box.sprite = s_portrait_ghost;
 												o_text_box.font = f_internal;
 												o_text_box.myText ="Why can't I read anything?!";
+												with (o_text_box){
+												curve = anim_smoothland;
+												spd = 30;
+												emote = s_emote_doubleexclamation;
+												draw = true;
+												}
 												next_step();
 												break;
 												case 4: 
@@ -183,6 +254,12 @@ if instance_exists(o_text_box){
 												o_text_box.sprite = s_portrait_ghost;
 												o_text_box.font = f_internal;
 												o_text_box.myText ="Why the !?#*% can't I read anything?!";
+												with (o_text_box){
+												curve = anim_smoothland;
+												spd = 30;
+												emote = s_emote_angry;
+												draw = true;
+												}
 												txt_speedup();
 												break;
 								}
@@ -202,6 +279,12 @@ if instance_exists(o_text_box){
 												o_text_box.font   = f_internal;
 												o_text_box.sprite = s_portrait_ghost;
 												o_text_box.myText = "Why can't I read anything?! I really wish I could figure out who this party is for... ";
+												with (o_text_box){
+												curve = anim_smoothland;
+												spd = 30;
+												emote = s_emote_question;
+												draw = true;
+												}
 												break;
 											
 								}
@@ -248,6 +331,12 @@ if instance_exists(o_text_box){
 											o_text_box.font = f_internal;
 											o_text_box.sprite = s_portrait_alex;
 											o_text_box.myText = "How comforting as usual, Tristan."
+											with (o_text_box){
+											curve = anim_smoothland;
+											spd = 30;
+											emote = s_emote_angry;
+											draw = true;
+											}
 											txt_speedup();
 											break;
 										}// swtich on txt box counter
@@ -290,6 +379,12 @@ if instance_exists(o_text_box){
 											case 1: 
 											o_text_box.font = f_internal;
 											o_text_box.myText = "How does Sam always know how to make me feel a little better?";
+											with (o_text_box){
+											curve = anim_smoothland;
+											spd = 30;
+											emote = s_emote_love;
+											draw = true;
+											}
 											txt_speedup();
 											break;
 										}
@@ -320,7 +415,13 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_dialogue;
 										o_text_box.sprite = s_portrait_alex;
 										o_text_box.myText = "I don't know what I am going to do without you, but I didn't know what I was doing when you were still here either...I guess I'm just glad you repeated your classic advice so much that I can hear it in my head forever... ";
-										next_step();
+										with (o_text_box){
+										curve = anim_smoothland;
+										spd = 30;
+										emote = s_emote_brokenheart;
+										draw = true;
+										}
+									next_step();
 										break;
 										case 1:
 										o_text_box.myText ="'cook your chicken till the juice runs clear','love harder than you hate.', 'dont drink and drive the riding lawmower'... you didn't always know what to say but you said it anyway."
@@ -359,6 +460,12 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_alex;
 										o_text_box.myText = "Is that how you really feel Tristan? You sure made a stink about those walks while you were getting divorced. Whatever."
+											with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_angry;
+									draw = true;
+									}
 										next_step();
 										break;
 										case 3:
@@ -375,6 +482,12 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_alex;
 										o_text_box.myText ="No one is gonna be there for me at graduation next weekend. If I ever get married my parents wont be able to be there. Maybe I just won't attend graduation...";
+											with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_brokenheart;
+									draw = true;
+									}
 										next_step();
 										break;
 										case 6:
@@ -387,7 +500,13 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_alex;
 										o_text_box.myText = "I thought I knew everything about what was going on in my life, but now... I dont know what I want, let alone what to do next.";
-										txt_speedup();
+										with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_brokenheart;
+									draw = true;
+									}
+									txt_speedup();
 										break;
 									}
 				}
@@ -412,6 +531,12 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_alex
 										o_text_box.myText = "Gosh I hate giving speeches... especially about my dead parent. My palms are sweating. Is there a tissue around here somewhere? I want to take a nap but I haven't been able to sleep in days.";
+											with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_angry;
+									draw = true;
+									}
 										txt_speedup();
 										break;
 									}
@@ -437,6 +562,12 @@ if instance_exists(o_text_box){
 							o_text_box.font = f_internal;
 							o_text_box.sprite = s_portrait_sam;
 							o_text_box.myText = "I know we were discrete but it still stings, especially now. ";
+								with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_brokenheart;
+									draw = true;
+									}
 							txt_speedup();						
 						break;
 					}
@@ -461,6 +592,12 @@ if instance_exists(o_text_box){
 								o_text_box.font = f_internal;
 								o_text_box.sprite = s_portrait_sam;
 								o_text_box.myText = "Beautiful, smart, funny, talented...amazing";
+									with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_love;
+									draw = true;
+									}
 								txt_speedup();
 							break;
 						}
@@ -484,6 +621,12 @@ if instance_exists(o_text_box){
 							o_text_box.font = f_internal;
 							o_text_box.sprite = s_portrait_sam;
 							o_text_box.myText ="So this is really it? You're just gonna leave me here on earth by myself with no one to secretly hate F.R.I.E.N.D.S. with?! How could you do this to me after all these years, we've all been hunting our whole lives.. You should have been more careful, there are people here that need you!";
+								with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_brokenheart;
+									draw = true;
+									}
 							txt_speedup();
 						break;
 					}
@@ -511,6 +654,12 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite =s_portrait_sam;
 										o_text_box.myText ="They were such a cute couple when they first met...Honestly maybe Jude's best relationship of all, despite their rough spots. They learned a lot together. Jude was so torn up after Alex's father passed away, we all thought they would never find someone again.";
+											with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_love;
+									draw = true;
+									}
 										next_step();
 						break;
 									
@@ -529,6 +678,12 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite =s_portrait_sam;
 										o_text_box.myText =	"That and letting those pigs out was one of the best things we ever got up to pal. I would do anything for another chance to see the afternoon sun bounce off the water onto your face while catching bass in the summers.";		
+											with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_love;
+									draw = true;
+									}
 										next_step();
 						break;
 						case 6:
@@ -541,6 +696,12 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_sam;
 										o_text_box.myText = "Christ, the kiddo has already been through so much... and now this. Both parents gone before graduation and a farm to take care of. Someone needs to be there for them.";
+											with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_brokenheart;
+									draw = true;
+									}
 										txt_speedup();
 						break;
 					}//end of switch on o_text_box.coutner
@@ -558,7 +719,7 @@ if instance_exists(o_text_box){
 									
 										case 1: 
 										o_text_box.myText = "(next page) Poem about death and life\n'We all get a single spoonful of life, a little salt, a little honey too. Taste the whole thing the best you can for sooner than we'd ever like all that's left is the taste of clean silver.'";
-										txt_speedup();
+										next_step();
 										break;
 						}
 					}
@@ -581,7 +742,13 @@ if instance_exists(o_text_box){
 						case 1:
 							o_text_box.font = f_internal;
 							o_text_box.sprite = s_portrait_tristan;
-							o_text_box.myText = "I bet they were just looking for a way to get out of going to that graduation.";
+							o_text_box.myText = "I bet they were just looking for a way to get out of going to that graduation.They loved their work and the farm more than anyone or anything. They loved it more than me, more than the spouse before me, maybe more than Alex.";
+								with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_brokenheart;
+									draw = true;
+									}
 							txt_speedup();
 						break;
 					}
@@ -620,6 +787,12 @@ if instance_exists(o_text_box){
 							o_text_box.font = f_dialogue;
 							o_text_box.sprite = s_portrait_tristan;
 							o_text_box.myText = "You were always so kind to me, even while we were separating.";
+							with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_brokenheart;
+									draw = true;
+									}
 							next_step();
 						break;
 					
@@ -627,6 +800,12 @@ if instance_exists(o_text_box){
 							o_text_box.font = f_internal;
 							o_text_box.sprite = s_portrait_tristan;
 							o_text_box.myText ="They never really tried to love me, they were just pretending to...if I had known this was going to happen right now, I wouldnt have pushed for the divorce";
+							with (o_text_box){
+									curve = anim_bounce;
+									spd = 60;
+									emote = s_emote_angry;
+									draw = true;
+									}
 							txt_speedup();
 						break;
 					}
@@ -643,11 +822,23 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_description;
 										o_text_box.sprite = s_portrait_guestbook;
 										o_text_box.myText ="Tristan's Entry\nI will never forget the way you looked at me when we were younger. When our relationship was younger... I'm so grateful for the wonderful time we had together.";
+										with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_sad;
+									draw = true;
+									}
 										next_step();
 						break;
 									
 						case 1:
 										o_text_box.myText ="Tristan's Entry Continued\nDespite how short it was, I will miss our long morning walks around the farm while the sun rose, me with my black coffee and you with your two bags of lipton black tea with a scoop of sugar and just a splash of milk.";
+										with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_love;
+									draw = true;
+									}
 										next_step();
 						break;
 						case 2:
@@ -684,6 +875,12 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite = s_portrait_tristan;
 										o_text_box.myText = "I never really liked your kid but this whole situation is devastating. I never wanted to see them like this.";
+										with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_brokenheart;
+									draw = true;
+									}
 										txt_speedup();
 						break;
 					}
@@ -703,6 +900,19 @@ if instance_exists(o_text_box){
 										o_text_box.myText = "(next page) Poem about death and life\n'We all get a single spoonful of life, a little salt, a little honey too. Taste the whole thing the best you can for sooner than we'd ever like all that's left is the taste of clean silver.'";
 										txt_speedup();
 										break;
+										
+										case 2:
+										o_text_box.font = f_internal;
+										o_text_box.sprite = s_portrait_tristan;
+										o_text_box.myText ="This is going to take all afternoon... I hope the AC keeps working in this dump.";
+										
+										with (o_text_box){
+									curve = anim_smoothland;
+									spd = 30;
+									emote = s_emote_angry;
+									draw = true;
+									}
+										break;
 						}
 				}
 			}
@@ -713,6 +923,7 @@ if instance_exists(o_text_box){
 
 //Text box disappears after walking away. 
 if instance_exists(o_text_box) and distance_to_object(hit) > 128{
+	o_text_box.draw = false;
 	instance_destroy(o_text_box);	
 }
 

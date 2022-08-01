@@ -1,1 +1,1 @@
-audio_play_sound(snd_piano,1,true);
+//audio_play_sound(snd_piano,1,true);

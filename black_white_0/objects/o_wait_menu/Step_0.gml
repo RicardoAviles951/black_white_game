@@ -34,3 +34,9 @@ if keyboard_check_pressed(vk_space){
 		break;
 	}
 }
+
+if instance_exists(o_wallet){
+	with(o_wallet){
+		allowed = false;
+	}
+}

@@ -16,7 +16,11 @@ if(currentState == cutSceneStates.Active)
 		with(o_text_box){
 			sprite = s_portrait_ghost;
 			font = f_internal;
-			myText = "Alex always is such a careful driver for a young person.";
+			myText = "Alex always is such a careful driver for a young person.";	
+			curve = anim_smoothland;
+			spd = 30;
+			emote = s_emote_love;
+			draw = true;						
 		}
 		cut_step();
 		break;
@@ -25,6 +29,10 @@ if(currentState == cutSceneStates.Active)
 		with(o_text_box){
 			font = f_dialogue;
 			myText = "Alex, it's nice to see you again, but where are we going?";
+			curve = anim_smoothland;
+			spd = 30;
+			emote = s_emote_question;
+			draw = true;
 		}
 		if timer >0 {
 			timer -=.01;
@@ -39,8 +47,14 @@ if(currentState == cutSceneStates.Active)
 		break;
 		
 		case 4:
-		o_text_box.sprite = s_portrait_ghost;
-		o_text_box.myText = "Alex? Did you hear me?";
+		with(o_text_box){
+		sprite = s_portrait_ghost;
+		myText = "Alex? Did you hear me?";
+		curve = anim_smoothland;
+		spd = 30;
+		emote = s_emote_question;
+		draw = true;
+		}
 		cut_step();
 		break;
 		
@@ -52,9 +66,11 @@ if(currentState == cutSceneStates.Active)
 		break;
 		
 		case 6:
-		o_text_box.sprite = s_pixel;
-		o_text_box.font = f_description;
-		o_text_box.myText ="\n...Alex sighs heavily, collects themself and gets out of the car, grabbing their jacket and bag.";
+		with(o_text_box){
+		sprite = s_pixel;
+		font = f_description;
+		myText ="\n...Alex sighs heavily, collects themself and gets out of the car, grabbing their jacket and bag.";
+		}
 		if timer <1 {
 			timer +=.01;
 		}
