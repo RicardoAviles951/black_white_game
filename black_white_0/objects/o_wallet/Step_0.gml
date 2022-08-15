@@ -16,7 +16,7 @@ switch(global.state){
 	break;
 }
 
-if allowed {
+
 switch(global.state){
 	case states.ghost:
 	
@@ -91,7 +91,8 @@ switch(global.state){
 	
 	case states.tristan:
 	
-	switch(wallet_page){
+	switch(wallet_page)
+		{
 			case 0:
 				sprite = s_portrait_wallet;
 				font = f_description;
@@ -109,17 +110,14 @@ switch(global.state){
 			emote_create(target_y,curve,spd,emote);
 			draw = true;
 			break;
-	}
+		}
 	break;
 	
 }
 
 if (keyboard_check_pressed(ord("E")) and can_destroy == true){
+	var t = time_source_create(time_source_game,1,time_source_units_frames,dest);
 	target.idle = false;
-	instance_destroy();
+	time_source_start(t);
 }
-}
-else
-{
-	target.idle = false;
-}
+

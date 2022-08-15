@@ -1,1 +1,1 @@
-global.state = states.sam;
+//global.state = states.sam;

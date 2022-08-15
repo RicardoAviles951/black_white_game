@@ -4,3 +4,4 @@ move = false;
 curve = animcurve_get_channel(anim_bounce,"curve1");
 percent = 0;
 y_pos = 0;
+global.allowed = false;

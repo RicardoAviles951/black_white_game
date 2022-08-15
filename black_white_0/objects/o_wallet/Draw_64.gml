@@ -2,7 +2,7 @@
 var guiW = display_get_gui_width();
 var guiH = display_get_gui_height();
 var width = guiW - guiW*1/4;
-if allowed{
+
 //Draw the rectangle
 	draw_sprite_stretched(s_text_box,0,guiW/8, guiH*5/8,width,guiH/3+16);
 	// temp vars to hold size information and colors
@@ -33,4 +33,3 @@ if allowed{
 	draw_set_font(font);
 	draw_text_ext(guiW/3, guiH*5/8+16,text,38,width - (guiW*5/24)-8);
 		
-}

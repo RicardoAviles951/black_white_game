@@ -41,7 +41,7 @@ emote = s_emote_love;
 draw = false;
 grw = 0;
 y_pos = 0;
-
+global.allowed = false;
 //Debug only
 y_adj = 0
 x_adj = 0;

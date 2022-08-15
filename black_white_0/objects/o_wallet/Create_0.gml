@@ -1,4 +1,3 @@
-allowed = true;
 wallet_page = 0;
 text = "This is my wallet.";
 sprite = s_portrait_wallet;
@@ -21,3 +20,11 @@ draw = false;
 grw = 0;
 y_pos = 0;
 target = noone;
+dest = function(){
+	instance_destroy();
+}
+
+
+/*Only create wallet when needed
+  Only create wallet when allowed
+  Use global var to dictate that 

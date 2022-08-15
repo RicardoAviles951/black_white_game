@@ -1,3 +1,4 @@
+disable = false;
 //Main Menu
 option[0] = "Begin";
 //option[0,1] = "Settings";
@@ -20,6 +21,12 @@ inputting = false;
 vol_mod = 1;
 vol_incr = .01;
 
+fade_go = function(target){
+	room_goto(target);
+}
+
+alpha = 0;
+fade = false;
 //DEBUG only
 x_adj = 0;
 y_adj = 0 ;

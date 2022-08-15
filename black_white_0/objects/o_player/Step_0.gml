@@ -10,13 +10,16 @@ anim(s_ghost_walk_right,s_ghost_walk_left,s_ghost_walk_down,s_ghost_walk_up,s_gh
 			instance_create_depth(x,y,-9999,o_wait_menu);
 		}
 	}
-if death = true{
 
-}
-if !instance_exists(o_wallet) and key_wallet{
-	instance_create_depth(x,y,-9999,o_wallet);
-	idle = true;
-}
+if key_wallet
+		{	
+			if !instance_exists(o_wallet) and global.allowed = true
+				{
+					instance_create_depth(x,y,-9999,o_wallet);
+					idle = true;
+				}
+				
+		}//end of wallet key pressed
 }
 else{
 	

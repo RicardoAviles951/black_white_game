@@ -10,3 +10,4 @@ delta_x = x - xprevious;
 delta_y = y - yprevious;
 death = false;
 grow = false;
+global.allowed = true;
