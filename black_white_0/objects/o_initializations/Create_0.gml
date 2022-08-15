@@ -51,4 +51,9 @@ global.view_warp = true;
 //Anim vars
 global.spr_index = noone;
 global.img_index = noone;
+
+//Wallet Var
+global.allowed = true;
+global.tris_end = false;
+global.sam_end = false;
 room_goto_next();

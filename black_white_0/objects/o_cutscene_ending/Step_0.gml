@@ -5,6 +5,7 @@ if(currentState == cutSceneStates.Active)
 	switch (currentStep) 
 	{
 		case 0:
+		open_sq(sq_fadeIn_white);
 		o_chair.visible = false;
 		o_dog.visible = false;
 		global.state = noone;
@@ -14,13 +15,13 @@ if(currentState == cutSceneStates.Active)
 		zoom_mode = zm.zoom_out;
 		}
 		
-		if !instance_exists(o_text_box){
-			tb = instance_create_depth(x,y,-9999,o_text_box);
-		}
-		currentStep+=1;
+		if alarm[0]  = -1 alarm[0] = 30;
 		break;
 		
 		case 1:
+		if !instance_exists(o_text_box){
+			tb = instance_create_depth(x,y,-9999,o_text_box);
+		}
 		o_camera.zoom_mode = zm.zoom_in;
 		o_camera.target = o_gradcap_prop;
 		tb.font   = f_dialogue;
@@ -57,7 +58,7 @@ if(currentState == cutSceneStates.Active)
 		break;
 		
 		case 4:
-		tb.myText = "The tag on the teabag reads:\n 'You had a chance that few get, and you used it well: you are remembered and you are loved. Drink me.'";
+		tb.myText = "The tag on the teabag reads:\n\n'You had a chance that few get, and you used it well: you are remembered and you are loved. Drink me.'";
 		cut_step();
 		break;
 		
@@ -75,14 +76,15 @@ if(currentState == cutSceneStates.Active)
 		break;
 		
 		case 6:
+	
 		if instance_exists(o_text_box) {
 			instance_destroy(o_text_box);
 		}
 		open_sq(sq_fadeOut);
-		
+		if !audio_is_playing(snd_sipping) audio_play_sound(snd_sipping,1,false);
 		//Focus on dog
 		//currentStep+=1;
-		if alarm[0] = -1 alarm[0] = 30;
+		if alarm[0] = -1 alarm[0] = 60;
 		break;
 		
 		case 7:
@@ -105,6 +107,8 @@ if(currentState == cutSceneStates.Active)
 		}
 		tb.font   = f_dialogue;
 		tb.sprite = s_portrait_ghost;
+		//Play bark sound here
+		if !audio_is_playing(snd_bark) audio_play_sound(snd_bark,1,true);
 		tb.myText = "Teddy!!!! I knew you would be here waiting for me! Let's play!";
 		with(o_text_box){
 			spd   = 30;
@@ -145,6 +149,7 @@ if(currentState == cutSceneStates.Active)
 		break;
 		
 		case 13:
+		if audio_is_playing(snd_endsong) audio_sound_gain(snd_endsong,0,1000);
 		o_dog.y -=1;
 		o_player.y -=1;
 		if alarm[4] = -1 alarm[4] = 120;
@@ -152,6 +157,9 @@ if(currentState == cutSceneStates.Active)
 		break;
 		
 		case 14:
+		o_music.can_play = false;
+		audio_stop_sound(snd_endsong);
+		audio_stop_sound(snd_bark);
 		open_sq(sq_fadeOut_white);
 		if alarm[3] = -1 alarm[3] = 120;
 		break;

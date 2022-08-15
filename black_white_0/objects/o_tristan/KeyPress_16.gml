@@ -1,0 +1,1 @@
+global.tris_goals = 5;

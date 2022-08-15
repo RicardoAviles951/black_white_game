@@ -4,6 +4,10 @@ if(currentState == cutSceneStates.Active)
 	switch (currentStep) 
 	{
 		case 0:
+		//Play ambient noise
+		if !audio_is_playing(snd_birds) audio_play_sound(snd_birds,1,true);
+		audio_sound_gain(snd_birds,.75,1000);
+		//Set camera properities 
 		o_camera.cam_state = camera.cutscene;
 		global.state = noone;
 		o_camera.target = o_player;

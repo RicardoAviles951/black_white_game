@@ -38,7 +38,6 @@ if hit != -4  //if the collision line is hitting anything
 		}
 	}
 	
-var guiW = display_get_gui_width();
 var guiH = display_get_gui_height();
 //Logic for determining progression of text box
 if instance_exists(o_text_box){
@@ -191,6 +190,8 @@ if instance_exists(o_text_box){
 												break;
 												
 												case 2:
+												o_music.can_play = false;
+												audio_stop_sound(snd_piano);
 												instance_destroy(o_text_box);
 												o_fx_ctr.vignette = false;
 												o_fx_ctr.zoom = true;
@@ -211,7 +212,7 @@ if instance_exists(o_text_box){
 												o_text_box.sprite = s_portrait_guestbook;
 												o_text_box.font = f_wingdings;
 												o_text_box.myText ="Tristan's Entry\n'I will never forget the way you looked at me when we were'";
-												
+												sfx_play(snd_pages,false); 
 												next_step();
 												break;
 												case 1:
@@ -224,12 +225,14 @@ if instance_exists(o_text_box){
 												emote = s_emote_exclamation;
 												draw = true;
 												}
+												sfx_play(snd_pages,false); 
 												next_step();
 												break;
 												case 2:
 												o_text_box.sprite = s_portrait_guestbook;
 												o_text_box.font = f_wingdings;
 												o_text_box.myText ="Alex's Entry\n'Did this work? Or did this not work? Something something anything at all. '";
+												sfx_play(snd_pages,false); 
 												next_step();
 												break;
 												case 3:
@@ -242,12 +245,14 @@ if instance_exists(o_text_box){
 												emote = s_emote_doubleexclamation;
 												draw = true;
 												}
+												sfx_play(snd_pages,false); 
 												next_step();
 												break;
 												case 4: 
 												o_text_box.sprite = s_portrait_guestbook;
 												o_text_box.font = f_wingdings;
 												o_text_box.myText ="Sams's Entry\n'Did this work? Or did this not work?Yuuup this cannot be read by the average person.'";
+												sfx_play(snd_pages,false); 
 												next_step();
 												break;										
 												case 5:
@@ -285,6 +290,7 @@ if instance_exists(o_text_box){
 												emote = s_emote_question;
 												draw = true;
 												}
+												txt_speedup();
 												break;
 											
 								}
@@ -312,13 +318,13 @@ if instance_exists(o_text_box){
 		case states.alex://When playing as Alex
 			if instance_exists(o_tristan){
 				if (hit == o_tristan.id){
-					if global.interact_tristan == false{
+					
+					if global.rm != rooms.ending
+					{	
+				if global.interact_tristan == false{
 						global.alex_goals +=1;
 						global.interact_tristan = true;
 					}
-					if global.rm != rooms.ending
-					{	
-				
 						switch(o_text_box.counter)
 										{
 											case 0:
@@ -344,15 +350,25 @@ if instance_exists(o_text_box){
 					}
 					else
 					{
-						o_alex.idle = true;
-						with(o_text_box){
-							txt_mode = mode.interactive;
-							spr_ask = s_portrait_tristan;
-							myText = "Do you want to go with me to get a coffee or something? You look like a wreck.";
-							choice[0] = "Sure, I'm exhausted maybe more coffee will help.";
-							choice[1] = "I'd rather go back to my room and look at the wall.";
-							choice[2] = "No thanks, maybe we can talk after I've had some rest.";
+						if global.interact_tristan == false{
+							o_alex.idle = true;
+							with(o_text_box){
+								txt_mode = mode.interactive;
+								spr_ask = s_portrait_tristan;
+								myText = "Do you want to go with me to get a coffee or something? You look like a wreck.";
+								choice[0] = "Sure, I'm exhausted maybe more coffee will help.";
+								choice[1] = "I'd rather go back to my room and look at the wall.";
+								choice[2] = "No thanks, maybe we can talk after I've had some rest.";
 						}
+						global.tris_end = true;
+					}
+					else{
+						with(o_text_box){
+							sprite = s_portrait_tristan;
+							font = f_description;
+							myText ="Tristan looks calm and also a bit restless.";
+						}
+					}
 						
 						
 						
@@ -361,12 +377,13 @@ if instance_exists(o_text_box){
 			}//inst exist
 			if instance_exists(o_sam){
 				if (hit == o_sam.id){
-					if global.interact_sam == false{
+					
+					if global.rm != rooms.ending
+					{
+						if global.interact_sam == false{
 						global.alex_goals +=1;
 						global.interact_sam = true;
 					}
-					if global.rm != rooms.ending
-					{
 						switch(o_text_box.counter)
 										{
 											case 0:
@@ -391,16 +408,29 @@ if instance_exists(o_text_box){
 					}
 					else
 					{
-						o_alex.idle = true;
-						with(o_text_box){
-							txt_mode = mode.interactive;
-							spr_ask = s_portrait_sam;
-							myText = "Hey, they opened some kinda new Mexican-Fusion place up main street while you were away at school, can I buy you a cat-fish taco? ";
-							choice[0] = "No thanks, maybe some other time soon?";
-							choice[1] = "No, I'm really tired.";
-							choice[2] = "I'd like that. Can I ask you more about what Jude was like growing up?";
+					if global.interact_sam == false{	
+							o_alex.idle = true;
+							with(o_text_box){
+								txt_mode = mode.interactive;
+								spr_ask = s_portrait_sam;
+								myText = "Hey, they opened some kinda new Mexican-Fusion place up main street while you were away at school, can I buy you a cat-fish taco? ";
+								choice[0] = "No thanks, maybe some other time soon?";
+								choice[1] = "No, I'm really tired.";
+								choice[2] = "I'd like that. Can I ask you more about what Jude was like growing up?";
+							}
+							global.sam_end = true;
 						}
-					}
+					else
+						{
+							with(o_text_box){
+								sprite = s_portrait_sam;
+								font = f_description;
+								myText = "Sam smiles at you and then looks the other way.";
+							}
+						}
+					
+					}//end of else
+					
 				}
 			}
 			if instance_exists(o_casket){
@@ -449,6 +479,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_description;
 										o_text_box.sprite = s_portrait_guestbook;
 										o_text_box.myText ="Tristan's Entry\nI will never forget the way you looked at me when we were younger. When our relationship was younger... I'm so grateful for the wonderful time we had together.";
+										sfx_play(snd_pages,false); 
 										next_step();
 										break;
 									
@@ -466,16 +497,19 @@ if instance_exists(o_text_box){
 									emote = s_emote_angry;
 									draw = true;
 									}
+										sfx_play(snd_pages,false); 
 										next_step();
 										break;
 										case 3:
 										o_text_box.font = f_description;
 										o_text_box.sprite = s_portrait_guestbook;
 										o_text_box.myText ="Sam's Entry\nRemember that time when we had just met in school I didn't want to ask Bobbi out but you told me 'Whats the worst that could happen, you'll have more information than you did before.Take action! see what you find!'"
+										sfx_play(snd_pages,false); 
 										next_step();
 										break;
 										case 4:
 										o_text_box.myText ="Sam's Entry Continued\nWell... I asked Bobbie out and got a big 'N.O.' that was okay thought because you and I got to spend the whole summer together that year in the boat fishing. - Sammy";
+										sfx_play(snd_pages,false); 
 										next_step();
 										break;
 										case 5:
@@ -488,12 +522,14 @@ if instance_exists(o_text_box){
 									emote = s_emote_brokenheart;
 									draw = true;
 									}
+										sfx_play(snd_pages,false); 
 										next_step();
 										break;
 										case 6:
 										o_text_box.font = f_description;
 										o_text_box.sprite = s_portrait_guestbook;
 										o_text_box.myText ="Alex's Entry\nYou meant the world to me, I don't know how I will fill your shoes, do all that you did in a day, be as big as you. I guess I am going to have to figure it out. I Love you. - Lex";
+										sfx_play(snd_pages,false); 
 										next_step();
 										break;
 										case 7:
@@ -643,6 +679,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_description;
 										o_text_box.sprite = s_portrait_guestbook;
 										o_text_box.myText ="Tristan's Entry\nI will never forget the way you looked at me when we were younger. When our relationship was younger... I'm so grateful for the wonderful time we had together.";
+										sfx_play(snd_pages,false); 
 										next_step();
 						break;
 									
@@ -660,6 +697,7 @@ if instance_exists(o_text_box){
 									emote = s_emote_love;
 									draw = true;
 									}
+									sfx_play(snd_pages,false); 
 										next_step();
 						break;
 									
@@ -667,6 +705,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_description;
 										o_text_box.sprite = s_portrait_guestbook;
 										o_text_box.myText ="Sam's Entry\nRemember that time when we had just met in school I didn't want to ask Bobbi out but you told me 'Whats the worst that could happen, you'll have more information than you did before.Take action! see what you find!'"
+										sfx_play(snd_pages,false); 
 										next_step();
 						break;
 						case 4:
@@ -684,6 +723,7 @@ if instance_exists(o_text_box){
 									emote = s_emote_love;
 									draw = true;
 									}
+										sfx_play(snd_pages,false); 
 										next_step();
 						break;
 						case 6:
@@ -719,7 +759,7 @@ if instance_exists(o_text_box){
 									
 										case 1: 
 										o_text_box.myText = "(next page) Poem about death and life\n'We all get a single spoonful of life, a little salt, a little honey too. Taste the whole thing the best you can for sooner than we'd ever like all that's left is the taste of clean silver.'";
-										next_step();
+										txt_speedup();
 										break;
 						}
 					}
@@ -828,6 +868,7 @@ if instance_exists(o_text_box){
 									emote = s_emote_sad;
 									draw = true;
 									}
+										sfx_play(snd_pages,false); 
 										next_step();
 						break;
 									
@@ -845,6 +886,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite =s_portrait_tristan;
 										o_text_box.myText ="I really won't forget all the beautiful moments... how could you misunderstand me so much, how could we get so far without you really seeing me. After everything we went through together.";
+										sfx_play(snd_pages,false); 
 										next_step();
 						break;
 									
@@ -852,6 +894,7 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_description;
 										o_text_box.sprite = s_portrait_guestbook;
 										o_text_box.myText ="Sam's Entry\nRemember that time when we had just met in school I didn't want to ask Bobbi out but you told me 'Whats the worst that could happen, you'll have more information than you did before.Take action! see what you find!'"
+										sfx_play(snd_pages,false); 
 										next_step();
 						break;
 						case 4:
@@ -863,12 +906,14 @@ if instance_exists(o_text_box){
 										o_text_box.font = f_internal;
 										o_text_box.sprite =s_portrait_tristan;
 										o_text_box.myText =	"You did always have a great attitude about life, even if you were too stuck on work all the time. ";		
+										sfx_play(snd_pages,false); 
 										next_step();
 						break;
 						case 6:
 										o_text_box.font = f_description;
 										o_text_box.sprite = s_portrait_guestbook;
 										o_text_box.myText ="Alex's Entry\nYou meant the world to me, I don't know how I will fill your shoes, do all that you did in a day, be as big as you. I guess I am going to have to figure it out. I Love you. - Lex";
+										sfx_play(snd_pages,false); 
 										next_step();
 						break;
 						case 7:
@@ -898,7 +943,7 @@ if instance_exists(o_text_box){
 									
 										case 1: 
 										o_text_box.myText = "(next page) Poem about death and life\n'We all get a single spoonful of life, a little salt, a little honey too. Taste the whole thing the best you can for sooner than we'd ever like all that's left is the taste of clean silver.'";
-										txt_speedup();
+										next_step();
 										break;
 										
 										case 2:
@@ -912,6 +957,7 @@ if instance_exists(o_text_box){
 									emote = s_emote_angry;
 									draw = true;
 									}
+										txt_speedup();
 										break;
 						}
 				}

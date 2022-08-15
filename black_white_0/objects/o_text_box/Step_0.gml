@@ -29,46 +29,80 @@ switch(txt_mode){
 	
 	case mode.interactive:
 		get_input()
-var len = array_length(choice);
-pos+= menu_down - menu_up;
-//resets position based on array length
-if pos >= len pos = 0;
-if pos< 0 pos = len - 1;
-//Plays a sound when you change options.
-if (menu_up or menu_down) audio_play_sound(snd_option,1,false);
-if key_right or key_left {
-	o_alex.idle = false;
-}
+		var len = array_length(choice);
+		pos+= menu_down - menu_up;
+		
+		//resets position based on array length
+		if pos >= len pos = 0;
+		if pos< 0 pos = len - 1;
+		
+		//Plays a sound when you change options.
+		if (menu_up or menu_down) audio_play_sound(snd_option,1,false);
+		if key_right or key_left {
+			o_alex.idle = false;
+			if global.interact_tristan == false global.tris_end = false;
+			if global.interact_sam == false global.sam_end = false;
+		}
 
-if key_enter{
-	switch(pos){
-		case 0:
-			o_alex.idle = false;
-			o_alex.last_stop +=1;
-			//Emote code here
-			instance_destroy();
-		break;
+		if key_enter{
+			if txt_finished{
+			if global.tris_end == true
+			{
+				global.interact_tristan = true;
+			}
+			if global.sam_end == true
+			{
+				global.interact_sam = true;
+			}
+			switch(pos){
+				case 0:
+					o_alex.idle = false;
+					o_alex.last_stop +=1;
+					with(o_sam){
+						if can_respond == false num = 0;
+					}
+					with(o_tristan){
+						if can_respond == false num = 0;
+					}
+					//Emote code here
+					instance_destroy();
+				break;
 		
-		case 1:
-			o_alex.idle = false;
-			o_alex.last_stop +=1;
-			instance_destroy();
-		break
+				case 1:
+					o_alex.idle = false;
+					o_alex.last_stop +=1;
+					with(o_sam){
+						if can_respond == false num = 1;
+					}
+					with(o_tristan){
+						if can_respond == false num = 1;
+					}
+					instance_destroy();
+				break
 		
-		case 2:
-			o_alex.idle = false;
-			o_alex.last_stop +=1;
-			instance_destroy();
-		break;
-	}
-}
-	break;
+				case 2:
+					o_alex.idle = false;
+					o_alex.last_stop +=1;
+					with(o_sam){
+						if can_respond == false num = 2;
+					}
+					with(o_tristan){
+						if can_respond == false num = 2;
+					}
+					instance_destroy();
+				break;
+			}
+			}
+			else{
+				char_speed = 2;
+			}
+		}
+		
+		
+		
+		
+	break;//end of switch on interactive mode
 	
-}
-if instance_exists(o_wallet){
-	with(o_wallet){
-		allowed = false;
-	}
 }
 
 

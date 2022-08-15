@@ -7,3 +7,6 @@ spr_inv = s_alex_inverted;
 delta_x = x - xprevious;
 delta_y = y - yprevious;
 last_stop = 0;
+global.allowed = true;
+tristan_spoke = false;
+sam_spoke = false;
